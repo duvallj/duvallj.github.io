@@ -1,0 +1,37 @@
+<script src="Projects/base/primes.js"></script>
+<script>
+  function factorFromPage() {
+  	var temp, divisor, num_list, x;
+  	temp = document.getElementById("number").value;
+  	divisor = 2;
+  	x = 0;
+  	num_list = [];
+  	while (divisor*divisor <= temp) {
+  		while(temp%divisor == 0) {
+  			num_list[x] = divisor;
+  			temp /= divisor;
+  			x++;
+  		}
+  		divisor++;
+  	}
+  	if(temp>1){ num_list[num_list.length] = temp; }
+  	document.getElementById("factorOutput").innerHTML = printList(num_list);
+  }
+
+  function printPrimesToPage() {
+    var upTo = document.getElementById("numOfPrimes").value;
+    if(upTo>10000){
+      alert('Are you sure you want to do this?');
+    }
+  	document.getElementById("primeOutput").innerHTML = printList(findPrimes(upTo));
+  }
+</script>
+<h1>Primes and factoring</h1>
+<p>Enter a number to get factored:</p>
+<input id="number" type = "text">
+<button type="button" onclick="factorFromPage()">Do it</button>
+<p id="factorOutput"></p>
+<input id="numOfPrimes" type="text">
+<button type="button" onclick="printPrimesToPage()">Click to get first primes!</button>
+<p id="primeOutput"></p>
+<br><br><a href='?page=Projects.html'>Back</a>

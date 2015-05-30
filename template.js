@@ -8,4 +8,4 @@ function replacePage(){
   var sptemp = template.split("{{}}");
   document.write(sptemp[0] + heading + sptemp[1] + pghead + sptemp[2] + pgtext + sptemp[3]);
 }
-  
+replacePage();

@@ -6,7 +6,7 @@ var template = function () {
   $.ajax({
       'async': false,
       'dataType': 'html',
-      'url': "template.html",
+      'url': "/template.html",
       'success': function (data) {
           tmp = data;
       }

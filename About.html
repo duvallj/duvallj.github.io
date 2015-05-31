@@ -6,32 +6,9 @@
   <p>Check out my projects and downloads for the things I like to do.</p>
   <br><br><a href='/'>Back</a>
 </div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-  var heading = document.getElementById("heading").innerHTML;
-var pghead = document.getElementById("pghead").innerHTML;
-var pgtext = document.getElementById("pgtext").innerHTML;
-console.log(heading);
-console.log(pghead);
-console.log(pgtext);
-var template = function () {
-  var tmp = null;
-  $.ajax({
-      'async': false,
-      'type': "POST",
-      'global': false,
-      'dataType': 'html',
-      'url': "/template.html",
-      'data': { 'request': "", 'target': 'arrange_url', 'method': 'method_target' },
-      'success': function (data) {
-          tmp = data;
-      }
-  });
-  return tmp;
-}();
-console.log(template);
- 
-var sptemp = template.split("derp");
+  console.log($("#heading"));
 });
 </script>

@@ -1,19 +1,21 @@
-var heading = document.getElementById("heading").innerHTML;
-var pghead = document.getElementById("pghead").innerHTML;
-var pgtext = document.getElementById("pgtext").innerHTML;
-var template = function () {
-  var tmp = null;
-  $.ajax({
-      'async': false,
-      'dataType': 'html',
-      'url': "https://jediguy13.github.io/template.html",
-      'success': function (data) {
-          tmp = data;
-      }
-  });
-  return tmp.split("derp");
-}();
-document.write(template[0] + heading + template[1] + pghead + template[2] + pgtext + template[3]);
-document.getElementById("heading").innerHTML = "";
-document.getElementById("pghead").innerHTML = "";
-document.getElementById("pgtext").innerHTML = "";
+var heading, pghead, pgtext;
+
+$("body").hide();
+
+heading = $("#heading").html();
+pghead = $("#pghead").html();
+pgtext = $("#pgtext").html();
+$("#heading").html("");
+$("#pghead").html("");
+$("#pgtext").html("");
+
+$.ajax({
+  'async': true,
+  'dataType': 'html',
+  'url': "https://jediguy13.github.io/template.html",
+  'success': function (data) {
+      template = data.split("derp");
+      $("body").html(template[0] + heading + template[1] + pghead + template[2] + pgtext + template[3]);
+      $("body").fadeIn();
+  }
+});

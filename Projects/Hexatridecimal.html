@@ -1,3 +1,6 @@
+<div id='heading'>Hexatridecimal</div>
+<div id='pghead'>Hexatridecimal</div>
+<div id='pgtext'>
 <h1>Hexatridecimal Converter</h1>
 <p>Or sexatrigesimal, or hexatrigesimal, or alphadecimal.</p>
 <p>Anyway, it's just another converter.</p>
@@ -10,7 +13,7 @@
 <input id='trecIN' type='text'/>
 <button type='button' onclick='fromTrecPage()'>Convert</button>
 <p id='decOUT'></p>
-<script src='Projects/base/baseConv.js'></script>
+<script src='base/baseConv.js'></script>
 <script>
   function toTrecPage(){
     document.getElementById('trecOUT').innerHTML = toTrec(document.getElementById('decIN').value);
@@ -19,4 +22,7 @@
     document.getElementById('decOUT').innerHTML = fromTrec(document.getElementById('trecIN').value);
   }
 </script>
-<br><br><a href='?page=Projects.html'>Back</a>
+<br><br><a href='/Projects'>Back</a>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="/template.js"></script>

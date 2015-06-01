@@ -4,9 +4,9 @@ var pgtext = document.getElementById("pgtext").innerHTML;
 var template = function () {
   var tmp = null;
   $.ajax({
-      'async': true,
+      'async': false,
       'dataType': 'html',
-      'url': "https://jediguy13.github.io/template.html",
+      'url': "/template.html",
       'success': function (data) {
           tmp = data;
       }

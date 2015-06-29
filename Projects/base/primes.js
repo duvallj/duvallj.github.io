@@ -13,7 +13,7 @@ function factor( num ){
 	x = 0;
 	num_list = [];
 	while (divisor*divisor <= temp) {
-		while(temp%divisor == 0) {
+		while(temp%divisor === 0) {
 			num_list[x] = divisor;
 			temp /= divisor;
 			x++;

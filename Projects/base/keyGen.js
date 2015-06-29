@@ -20,7 +20,7 @@ function getKeys() {
 	}
 	P = p1*p2;
 	var x = 0;
-	while ((n*x+1)%P != 0) {
+	while ((n*x+1)%P !== 0) {
 		x++;
 	}
 	D = (n*x+1)/P;

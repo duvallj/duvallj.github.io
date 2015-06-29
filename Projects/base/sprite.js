@@ -35,6 +35,6 @@ function up(num){
 function down(num){
   if(y+num<15){
     y+=num;
-    render()
+    render();
   }
 }

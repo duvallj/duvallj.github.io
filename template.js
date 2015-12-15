@@ -15,7 +15,7 @@ $.ajax({
   'url': "https://jediguy13.github.io/template.html",
   'success': function (data) {
       template = data.split("derp");
-      $("body").html(template[0] + heading + template[1] + pghead + template[2] + pgtext + template[3]);
+      $("html").html(template[0] + heading + template[1] + pghead + template[2] + pgtext + template[3]);
       $("body").fadeIn();
   }
 });

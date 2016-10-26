@@ -13,7 +13,6 @@ function parse(data)
 }
 
 function goto(page){
-  console.log("https://jediguy13.github.io/"+page);
   $.ajax(
     {
     'async': true,
@@ -21,7 +20,6 @@ function goto(page){
     'url': "https://jediguy13.github.io/"+page,
     'success': function (data)
     {
-      console.log(data);
       parse(data);
     },
     'error': function()

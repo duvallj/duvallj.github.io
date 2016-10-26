@@ -30,8 +30,7 @@ function goto(page){
       var v;
       v.title = '404';
       v.header = '404';
-      v.text = "<p>So sorry. Either this page does not exist, or it has been changed.\
-      <a href=\\"#\\" onclick=\"goto(\'index.json\');\">Back</a></p>";
+      v.text = "<p>So sorry. Either this page does not exist, or it has been changed.\<a href=\"#\" onclick=\"goto(\'index.json\');\">Back</a></p>";
       parse(v);
     }
   });

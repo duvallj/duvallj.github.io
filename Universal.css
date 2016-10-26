@@ -1,54 +1,48 @@
 @charset "UTF-8";
 
 div.main {
-  font: 24px 'Courier New';
+  font: 16px 'Courier New';
   color:#3399FF;
+  width: 70%;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 2%;
 }
 
 div.top {
   background-color: #3399FF;
   text-align: center;
-  font: 36px 'Courier New';
+  font: 30px 'Courier New';
   color: #FFFFF0;
 }
 
 div.title{
   color: #ffffff;
   text-align: center;
-  height: 60px;
   overflow: hidden;
 }
 
+a{
+  font: 16px 'Courier New';
+}
 a:link{
   color: #ff9900;
-  font:24px 'Courier New';
 }
 
 a:visited{
   color: #ff7700;
-  font:24px 'Courier New';
-}
-
-.left_pic {
-  position: relative;
-  float: left;
-}
-
-img.flip:hover {
-  -webkit-animation: picture-flip 1s forwards;
-}
-
-.right_pic {
-  position: relative;
-  float: right;
 }
 
 div.linkbar {
-  background-color: #FFFFCC;
+  background-color: #ffdd33;
   font:24px 'Courier New';
-  padding: 20px;
-  width: 130px;
+  width: 80%;
   color: #3399ff;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  text-align: center;
 }
 
 div.linkbar a:link{
@@ -56,31 +50,5 @@ div.linkbar a:link{
 }
 
 div.linkbar a:visited{
-  color: #0066FF;
-}
-
-div.linkbar a:hover{
-  -webkit-animation: background-flip 400ms forwards;
-  animation: background-flip 400ms forwards;
-}
-
-div.linkbar a:active{
-  color: #0033CC;
-}
-
-@keyframes background-flip {
-  0% {background: #ffffcc;}
-  100% {background: #3399ff; color: #fffff0;}
-}
-
-@-webkit-keyframes background-flip {
-  0% {background: #ffffcc;}
-  100% {background: #3399ff; color: #fffff0;}
-}
-
-/*this next one only works with webkit browsers**/
-
-@-webkit-keyframes picture-flip {
-  0% { -webkit-filter: invert(0%);}
-  100% { -webkit-filter: invert(100%);}
+  color: #0066ff;
 }

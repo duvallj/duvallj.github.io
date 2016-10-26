@@ -1,12 +1,11 @@
-<body style="display:none;">
 <div id="heading">Prime Factoring</div>
 <div id="pghead">Primes</div>
 <div id="pgtext">
-<script src="/Projects/base/primes.js"></script>
+<script src='/Projects/base/primes.js'></script>
 <script>
   function factorFromPage() {
   	var temp, divisor, num_list, x;
-  	temp = document.getElementById("number").value;
+  	temp = document.getElementById('number').value;
   	divisor = 2;
   	x = 0;
   	num_list = [];
@@ -19,25 +18,25 @@
   		divisor++;
   	}
   	if(temp>1){ num_list[num_list.length] = temp; }
-  	document.getElementById("factorOutput").innerHTML = printList(num_list);
+  	document.getElementById('factorOutput').innerHTML = printList(num_list);
   }
 
   function printPrimesToPage() {
-    var upTo = document.getElementById("numOfPrimes").value;
+    var upTo = document.getElementById('numOfPrimes').value;
     if(upTo>10000){
       alert('Are you sure you want to do this?');
     }
-  	document.getElementById("primeOutput").innerHTML = printList(findPrimes(upTo));
+  	document.getElementById('primeOutput').innerHTML = printList(findPrimes(upTo));
   }
 </script>
 <h1>Primes and factoring</h1>
 <p>Enter a number to get factored:</p>
-<input id="number" type = "text">
-<button type="button" onclick="factorFromPage()">Do it</button>
-<p id="factorOutput"></p>
-<input id="numOfPrimes" type="text">
-<button type="button" onclick="printPrimesToPage()">Click to get first primes!</button>
-<p id="primeOutput"></p>
+<input id='number' type = 'text'>
+<button type='button' onclick='factorFromPage()'>Do it</button>
+<p id='factorOutput'></p>
+<input id='numOfPrimes' type='text'>
+<button type='button' onclick='printPrimesToPage()'>Click to get first primes!</button>
+<p id='primeOutput'></p>
 <br><br><a href='/Projects'>Back</a>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

@@ -1,1 +1,25 @@
-{"text": "  <h1>Moving text</h1>  <p>Because, why not?</p>  <b>&nbsp;&nbsp;</b><button type='button' onclick='UP()'>Up</button>  <br>  <button type='button' onclick='LEFT()'>Left</button>  <button type='button' onclick='RIGHT()'>Right</button>  <br>  <b>&nbsp;&nbsp;</b><button type='button' onclick='DOWN()'>Down</button>  <p id='Workspace'></p>  <script src=\"/Projects/base/sprite.js\"></script>  <script>    render()    function UP(){      up(1);    }    function DOWN(){      down(1);    }    function LEFT(){      Left(1);    }    function RIGHT(){      Right(1);    }  </script>  <br>  <br>  <a href='#' onclick='goto(\"Projects/index.json\")'>Back</a>", "title": "Moving Text", "header": "Text that moves"}
+{"text": "  <h1>Moving text</h1>
+  <p>Because, why not?</p>
+  <b>&nbsp;&nbsp;</b><button type='button' onclick='UP()'>Up</button>
+    <br>  <button type='button' onclick='LEFT()'>Left</button>
+    <button type='button' onclick='RIGHT()'>Right</button>
+    <br>  <b>&nbsp;&nbsp;</b><button type='button' onclick='DOWN()'>Down</button>
+    <p id='Workspace'></p>
+    <script src=\"/Projects/base/sprite.js\"></script>
+    <script>
+    render()
+    function UP(){
+      up(1);
+    }
+    function DOWN(){
+      down(1);
+    }
+    function LEFT(){
+      Left(1);
+    }
+    function RIGHT(){
+      Right(1);
+    }
+    </script>
+    <br>  <br>
+    <a href='#' onclick='goto(\"Projects/index.json\")'>Back</a>", "title": "Moving Text", "header": "Text that moves"}

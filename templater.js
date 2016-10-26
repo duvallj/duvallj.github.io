@@ -1,10 +1,8 @@
 $(document).ready(function(){
   var query = window.location.search.substring(1);
-  if(!(query===''))
-  {
-    var fname = query.split('.')[0];
-    goto(fname+'.json');
-  }
+  if(query===''){query='index.json';}
+  var fname = query.split('.')[0];
+  goto(fname+'.json');
 });
 
 function parse(data)

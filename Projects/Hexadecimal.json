@@ -1,18 +1,1 @@
-{"text": "<h1>Hexadecial Conversion</h1><p>Convert to Hexadecimal</p>
-  <input id='decIN' type='number'/>
-  <button type='button' onclick='toHexPage()'>Convert</button>
-  <p id='hexOUT'></p><p>Convert to Decimal</p>
-  <input id='hexIN' type='text'/>
-  <button type='button' onclick='fromHexPage()'>Convert</button>
-  <p id='decOUT'></p>
-  <script src='/Projects/base/baseConv.js'>
-  </script><script>
-  function toHexPage(){
-    document.getElementById('hexOUT').innerHTML = toHex(document.getElementById('decIN').value);
-  }
-  function fromHexPage(){
-    document.getElementById('decOUT').innerHTML = fromHex(document.getElementById('hexIN').value);
-  }
-  </script>
-  <br><br>
-  <a href='#' onclick='goto(\"Projects/index.json\")'>Back</a>", "title": "Hexadecimal Conversion", "header": "Hexadecimal"}
+{"text": "<h1>Hexadecial Conversion</h1><p>Convert to Hexadecimal</p><input id='decIN' type='number'/><button type='button' onclick='toHexPage()'>Convert</button><p id='hexOUT'></p><p>Convert to Decimal</p><input id='hexIN' type='text'/><button type='button' onclick='fromHexPage()'>Convert</button><p id='decOUT'></p><script src='/Projects/base/baseConv.js'>  </script><script>function toHexPage(){  document.getElementById('hexOUT').innerHTML = toHex(document.getElementById('decIN').value);}function fromHexPage()    document.getElementById('decOUT').innerHTML = fromHex(document.getElementById('hexIN').value);}</script><br><br><a href='#' onclick='goto(\"Projects/index.json\")'>Back</a>", "title": "Hexadecimal Conversion", "header": "Hexadecimal"}

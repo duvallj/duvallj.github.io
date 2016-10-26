@@ -31,6 +31,7 @@ function goto(page){
     'url': "https://jediguy13.github.io/"+page,
     'success': function (data)
     {
+      console.log(data);
       JSON.parse(data,parse);
     },
     'error': function()

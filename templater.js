@@ -13,6 +13,7 @@ function parse(data)
 }
 
 function goto(page){
+  console.log("https://jediguy13.github.io/"+page);
   $.ajax(
     {
     'async': true,

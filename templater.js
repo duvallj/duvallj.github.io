@@ -7,20 +7,11 @@ $(document).ready(function(){
   }
 });
 
-function parse(key,value)
+function parse(data)
 {
-  if(key==='title')
-  {
-    document.getElementById('title').innerHTML = value;
-  }
-  else if (key==='header')
-  {
-    document.getElementById('header').innerHTML = value;
-  }
-  else if (key==='text')
-  {
-    document.getElementById('text').innerHTML = value;
-  }
+    document.getElementById('title').innerHTML = data.title;
+    document.getElementById('header').innerHTML = data.header;
+    document.getElementById('text').innerHTML = data.text;
 }
 
 function goto(page){
@@ -32,14 +23,16 @@ function goto(page){
     'success': function (data)
     {
       console.log(data);
-      JSON.parse(data,parse);
+      parse(data);
     },
     'error': function()
     {
-      JSON.parse('{"title": "404",\
-      "header": "404",\
-      "text": "<p>So sorry. Either this page does not exist, or it has been changed.\
-      <a href=\\"#\\" onclick=\\"goto(\'index.json\');\\">Back</a></p>"}',parse);
+      var v;
+      v.title = '404';
+      v.header = '404';
+      v.text = "<p>So sorry. Either this page does not exist, or it has been changed.\
+      <a href=\\"#\\" onclick=\"goto(\'index.json\');\">Back</a></p>";
+      parse(v);
     }
   });
 }

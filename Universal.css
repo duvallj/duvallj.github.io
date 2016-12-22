@@ -2,7 +2,7 @@
 
 div.main {
   font: 16px 'Courier New';
-  color:#3399FF;
+  color:#3399ff;
   width: 70%;
   padding-left: 15%;
   padding-right: 15%;
@@ -10,16 +10,21 @@ div.main {
 }
 
 div.top {
-  background-color: #3399FF;
+  background-color: #3399ff;
   text-align: center;
   font: 30px 'Courier New';
-  color: #FFFFF0;
+  color: #fffff0;
 }
 
 div.title{
   color: #ffffff;
   text-align: center;
   overflow: hidden;
+}
+
+div.centered{
+  display: flex;
+  justify-content: center;
 }
 
 a{
@@ -51,4 +56,8 @@ div.linkbar a:link{
 
 div.linkbar a:visited{
   color: #0066ff;
+}
+
+p.output{
+  color:#ff9900;
 }

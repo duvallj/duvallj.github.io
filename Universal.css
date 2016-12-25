@@ -7,7 +7,7 @@ body {
 }
 
 div.main {
-  font: 16px;
+  font-size: 16px;
   color:#3399ff;
   width: 70%;
   padding-left: 15%;
@@ -18,7 +18,7 @@ div.main {
 div.top {
   background-color: #3399ff;
   text-align: center;
-  font: 30px;
+  font-size: 30px;
   color: #fffff0;
 }
 
@@ -34,7 +34,7 @@ div.centered{
 }
 
 a{
-  font: 16px;
+  font-size: 16px;
 }
 a:link{
   color: #ff9900;
@@ -46,7 +46,7 @@ a:visited{
 
 div.linkbar {
   background-color: #ffdd33;
-  font: 24px;
+  font-size: 24px;
   width: 80%;
   color: #3399ff;
   padding-left: 10%;

@@ -20,8 +20,18 @@
     </div>
     <div class="main" id="text">
       <div id="canvasContainer" class="centered">
-        <canvas id="canvas" width="400" height="400"></canvas>
+        <!-- canvas id="canvas" width="400" height="400"></canvas !-->
+        <p>Enter the address and port of the Reversi game you want to watch:
+          <br>
+          <br>
+          Address: <input type="text" id="addr" value="localhost"/><br>
+          Port: <input type="number" id="port" value="7531" size="5"/><br>
+          Update delay (ms): <input type="number" id="delay" value="1000" size="5"/><br><br>
+          <button type="button" onclick="makeSocketFromPage();">Open Socket</button>
+        </p>
       </div>
+      <script src="../js/resize.js"></script>
+      <script src="../js/simplesocket.js"></script>
       <script src="../js/reversi.js"></script>
       <p>WIP</p>
     </div>

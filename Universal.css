@@ -28,7 +28,7 @@ div.title{
   overflow: hidden;
 }
 
-div.centered{
+.centered{
   display: flex;
   justify-content: center;
 }
@@ -65,5 +65,5 @@ div.linkbar a:visited{
 }
 
 p.output{
-  color:#ff9900;
+  color:#ff7700;
 }

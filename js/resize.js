@@ -42,8 +42,7 @@ function RText(x,y,text,size,font,fill){
   this.fill = fill;
   this.draw = function(ctx,wFactor,hFactor){
     ctx.fillStyle = this.fill;
-    ctx.font = this.font;
-    ctx.fillText(Math.floor((hFactor+wFactor)/2*size).toString()+'px '+this.font, this.text,
-    this.x*wFactor,this.y*hFactor);
+    ctx.font = Math.floor((hFactor+wFactor)/2*size).toString()+'px '+this.font;
+    ctx.fillText(this.text,this.x*wFactor,this.y*hFactor);
   };
 }

@@ -29,16 +29,17 @@ function drawBoard(rCanvas, bSize, bArray){
   } else {
     var bdWidth = rCanvas.rWidth/(11*bSize+1); //from sq*s+bd*(s+1)=w, sq=10*bd
     var bdHeight = rCanvas.rHeight/(11*bSize+1);
-    var sqWidth = 10*bdWidth;
-    var sqHeight = 10*bdHeight;
-    var uWidth = bdWidth + sqWidth;
-    var uHeight = bdHeight + sqHeight;
+    var bd = Math.min(bdWidth,bdHeight);
+    var rc = Math.min(rCanvas.rWidth,rCanvas.rHeight);
+    var sq = 10*bd;
+    var un = bd+sq;
 
     rCanvas.objects = [];
+    rCanvas.add(new RRect(0,0,rCanvas.rWidth,rCanvas.rHeight,EMPTY_CO));
 
     for(var i=0; i<=bSize; i++){
-      rCanvas.add(new RRect(uWidth*i, 0, bdWidth, rCanvas.rHeight,BORDER_CO));
-      rCanvas.add(new RRect(0, uHeight*i,rCanvas.rWidth, bdHeight,BORDER_CO));
+      rCanvas.add(new RRect(un*i, 0, bd, rc,BORDER_CO));
+      rCanvas.add(new RRect(0, un*i, rc, bd,BORDER_CO));
     }
 
     rCanvas.board = [];
@@ -46,13 +47,24 @@ function drawBoard(rCanvas, bSize, bArray){
     for(var y=0; y<bSize; y++){
       for(var x=0; x<bSize; x++){
         var index = bSize*y+x;
-        var toAdd = new RRect(uWidth*x+bdWidth, uHeight*y+bdHeight, sqWidth, sqHeight, NM2CO[bArray[index]])
+        var toAdd = new RRect(un*x+bd, un*y+bd, sq, sq, NM2CO[bArray[index]])
         rCanvas.add(toAdd);
         rCanvas.board[index] = toAdd;
       }
     }
+    rCanvas.add(new RRect(0,rCanvas.rWidth,rCanvas.rWidth,rCanvas.rHeight-rCanvas.rWidth,'#808080'));
+    rCanvas.add(rCanvas.black);
+    rCanvas.add(rCanvas.white);
   }
   // add code to show player scores as well
+  var bCount = 0;
+  var wCount = 0;
+  for(var i=0; i<bArray.length; i++){
+    if(bArray[i]==1){wCount++;}
+    if(bArray[i]==2){bCount++;}
+  }
+  rCanvas.black.text = rCanvas.black.text.split(':')[0]+': '+bCount.toString();
+  rCanvas.white.text = rCanvas.white.text.split(':')[0]+': '+wCount.toString();
   rCanvas.draw();
 }
 
@@ -64,37 +76,68 @@ function bStringToBArray(bString){
   return bArray;
 }
 
-function resize(canvas){
-  var oWidth = canvas.width;
-  canvas.width = canvas.parentNode.offsetWidth*9/10;
-  canvas.height = canvas.height * canvas.width / oWidth;
+function resize(canvas, gWidth, gHeight){
+  var availWidth = canvas.parentNode.offsetWidth*9/10;
+  var availHeight = (window.innerHeight - canvas.parentNode.offsetTop)*9/10;
+  if(availWidth*gHeight < availHeight*gWidth){
+    canvas.width = availWidth;
+    canvas.height = canvas.width * gHeight / gWidth;
+  }
+  else{
+    canvas.height = availHeight;
+    canvas.width = canvas.height * gWidth / gHeight;
+  }
 }
 
 function init(socket, delay){
   document.getElementById('canvasContainer').innerHTML =
-    '<canvas id="canvas" width="400" height="400"></canvas>';
+    '<canvas id="canvas" width="890" height="1000"></canvas>';
   var canvas = document.getElementById('canvas');
-  resize(canvas);
-  var rCanvas = new RCanvas(canvas, 890, 890);
-  window.addEventListener('resize', function(){ resize(canvas); rCanvas.resize(); });
+  var gWidth = canvas.width;
+  var gHeight = canvas.height;
+  resize(canvas, gWidth, gHeight);
+  var rCanvas = new RCanvas(canvas, gWidth, gHeight);
+  window.addEventListener('resize', function(){ resize(canvas, gWidth, gHeight);rCanvas.resize();});
+  var gap = rCanvas.rHeight - rCanvas.rWidth;
+  rCanvas.black = new RText(0,rCanvas.rHeight-gap*2/5,'Black',gap*2/5,'Roboto Mono',BLACK_CO);
+  rCanvas.white = new RText(rCanvas.rWidth/2,rCanvas.rHeight-gap*2/5,'White',gap*2/5,'Roboto Mono',WHITE_CO);
   drawBoard(rCanvas,5,[1,1,0,1,1,1,2,0,2,1,0,0,0,0,0,2,0,0,0,2,0,2,2,2,0]);
   rCanvas.resize();
   socket.on('reply', function(data){
     if(data.type === 'board'){
-      drawBoard(rCanvas, data.bSize, bStringtoBArray(data.board));
+      drawBoard(rCanvas, parseInt(data.bSize), bStringToBArray(data.board));
     }
-    elif(data.type === 'playerSwitch'){
-      //switch player turn
+    else if(data.type === 'names'){
+      rCanvas.black.text = data.black;
+      rCanvas.white.text = data.white;
     }
-    elif(data.type === 'playerWin'){
-      //display which player won
+    else if(data.type === 'win'){
+      rCanvas.objects = [];
+      if(data.winner === 'black'){
+        rCanvas.add(new RRect(0,0,rCanvas.rWidth,rCanvas.rHeight,BLACK_CO));
+        rCanvas.font = (rCanvas.rHeight/10).toString()+'px Roboto Mono'
+        rCanvas.add(new RText((rCanvas.ctx.measureText('Black Wins!').width)/2,rCanvas.rHeight/2,
+          'Black Wins!',rCanvas.rHeight/10,'Roboto Mono',WHITE_CO));
+      }
+      else if(data.winner === 'white'){
+        rCanvas.add(new RRect(0,0,rCanvas.rWidth,rCanvas.rHeight,WHITE_CO));
+        rCanvas.font = (rCanvas.rHeight/10).toString()+'px Roboto Mono'
+        rCanvas.add(new RText((rCanvas.ctx.measureText('White Wins!').width)/2,rCanvas.rHeight/2,
+          'White Wins!',rCanvas.rHeight/10,'Roboto Mono',BLACK_CO));
+      }
+      rCanvas.add(new RRect(0,rCanvas.rWidth,rCanvas.rWidth,rCanvas.rHeight-rCanvas.rWidth,'#808080'));
+      rCanvas.add(rCanvas.black);
+      rCanvas.add(rCanvas.white);
+      rCanvas.draw();
     }
   });
   window.setInterval(function(){socket.emit('refresh',{});}, delay);
 }
 
 function makeSocketFromPage(){
-  var socket = "derp";//io('http://'+document.getElementById('addr').value+':'+document.getElementById('port').value);
+  var socket = io('http://'+document.getElementById('addr').value+':'+document.getElementById('port').value);
+  console.log('made socket');
   var delay = parseInt(document.getElementById('delay').value);
   init(socket, delay);
+  console.log('finished initing socket');
 }

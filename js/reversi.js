@@ -69,6 +69,7 @@ function drawBoard(rCanvas, bSize, bArray){
 }
 
 function bStringToBArray(bString){
+  bString = bString.replace(/\?/g, '');
   var bArray = [];
   for(var i=0; i<bString.length; i++){
       bArray[i] = CH2NM[bString.charAt(i)];
@@ -104,14 +105,10 @@ function init(socket, delay){
   drawBoard(rCanvas,5,[1,1,0,1,1,1,2,0,2,1,0,0,0,0,0,2,0,0,0,2,0,2,2,2,0]);
   rCanvas.resize();
   socket.on('reply', function(data){
-    if(data.type === 'board'){
-      drawBoard(rCanvas, parseInt(data.bSize), bStringToBArray(data.board));
-    }
-    else if(data.type === 'names'){
-      rCanvas.black.text = data.black;
-      rCanvas.white.text = data.white;
-    }
-    else if(data.type === 'win'){
+    rCanvas.black.text = data.black;
+    rCanvas.white.text = data.white;
+    drawBoard(rCanvas, parseInt(data.bSize), bStringToBArray(data.board));
+    /*else if(data.type === 'win'){
       rCanvas.objects = [];
       if(data.winner === 'black'){
         rCanvas.add(new RRect(0,0,rCanvas.rWidth,rCanvas.rHeight,BLACK_CO));
@@ -129,7 +126,7 @@ function init(socket, delay){
       rCanvas.add(rCanvas.black);
       rCanvas.add(rCanvas.white);
       rCanvas.draw();
-    }
+    }*/
   });
   window.setInterval(function(){socket.emit('refresh',{});}, delay);
 }

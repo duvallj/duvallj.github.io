@@ -46,3 +46,13 @@ function RText(x,y,text,size,font,fill){
     ctx.fillText(this.text,this.x*wFactor,this.y*hFactor);
   };
 }
+
+function RImg(x,y,width,height,image){
+  this.x = x;
+  this.y = y;
+  this.width = width;
+  this.height = height;
+  this.draw = function(ctx, wFactor, hFactor){
+    ctx.drawImage(image,this.x*wFactor, this.y*hFactor, this.width*wFactor, this.height*hFactor);
+  };
+}

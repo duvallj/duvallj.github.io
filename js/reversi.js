@@ -11,6 +11,11 @@ WHITE_CO = '#ffffff';
 BLACK_CO = '#000000';
 BORDER_CO = '#663300';
 
+WHITE_IMG = new Image();
+WHITE_IMG.src = '../images/white.png';
+BLACK_IMG = new Image();
+BLACK_IMG.src = '../images/black.png';
+
 CH2NM = {};
 CH2NM[EMPTY_CH] = EMPTY_NM;
 CH2NM[WHITE_CH] = WHITE_NM;
@@ -47,7 +52,16 @@ function drawBoard(rCanvas, bSize, bArray){
     for(var y=0; y<bSize; y++){
       for(var x=0; x<bSize; x++){
         var index = bSize*y+x;
-        var toAdd = new RRect(un*x+bd, un*y+bd, sq, sq, NM2CO[bArray[index]])
+        var toAdd;
+        if (bArray[index]==EMPTY_NM){
+          toAdd = new RRect(un*x+bd, un*y+bd, sq, sq, EMPTY_CO);
+        }
+        else if (bArray[index]==WHITE_NM) {
+          toAdd = new RImg(un*x+bd, un*y+bd, sq, sq, WHITE_IMG);
+        }
+        else if (bArray[index]==BLACK_NM) {
+          toAdd = new RImg(un*x+bd, un*y+bd, sq, sq, BLACK_IMG);
+        }
         rCanvas.add(toAdd);
         rCanvas.board[index] = toAdd;
       }

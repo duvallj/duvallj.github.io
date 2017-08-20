@@ -1,4 +1,4 @@
-# jediguy13.github.io
+# duvallj.github.io
 
 Because I made a website.
-Only this time, it's on github.
+Mostly used to test javascript things.

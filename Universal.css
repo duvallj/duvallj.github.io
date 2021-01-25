@@ -4,11 +4,12 @@
 
 body {
   font-family: 'Roboto Mono', monospace;
+  margin: 0;
 }
 
 div.main {
   font-size: 16px;
-  color:#3399ff;
+  color: #22313f;
   width: 70%;
   padding-left: 15%;
   padding-right: 15%;
@@ -16,10 +17,17 @@ div.main {
 }
 
 div.top {
-  background-color: #3399ff;
+  background-color: #22313f;
   text-align: center;
   font-size: 30px;
-  color: #fffff0;
+  color: #ffffff;
+}
+
+div.top #header {
+  margin-top: 0em;
+  margin-bottom: 0em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 div.title{
@@ -33,22 +41,19 @@ div.title{
   justify-content: center;
 }
 
-a{
-  font-size: 16px;
-}
-a:link{
-  color: #ff9900;
+a, a:link, a:visited {
+  color: #0366d6;
 }
 
-a:visited{
-  color: #ff7700;
+a:hover, a:focus {
+  color: #22313f;
 }
 
 div.linkbar {
-  background-color: #ffdd33;
+  background-color: #e9f2f9;
   font-size: 24px;
   width: 80%;
-  color: #3399ff;
+  color: #22313f;
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 1%;
@@ -56,12 +61,8 @@ div.linkbar {
   text-align: center;
 }
 
-div.linkbar a:link{
-  color: #0066ff;
-}
-
-div.linkbar a:visited{
-  color: #0066ff;
+div.linkbar a:link, div.linkbar a:visited {
+  color: #22313f;
 }
 
 p.output{
